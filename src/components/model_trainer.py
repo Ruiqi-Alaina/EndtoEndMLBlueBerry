@@ -18,7 +18,7 @@ from src.exception import CustomException
 from src.logger import logging
 from src.utils import save_object
 from src.utils import load_object
-#from src.utils import hyperparam_tune
+from src.utils import hyperparam_tune
 from src.utils import fit_base_models
 from src.utils import get_out_of_fold_predictions
 from src.utils import fit_meta_model
@@ -42,7 +42,7 @@ class ModelTrainer:
                 "LGBM": LGBMRegressor(),
                 "CatBoost": CatBoostRegressor(),
                             }
-            """ params = {
+            params = {
                 "ElasticNet": {
                     #"alpha": [1e-2, 1e-1, 1.0, 5.0, 10.0],
                     "l1_ratio": np.arange(0, 1, 0.2)
@@ -86,14 +86,14 @@ class ModelTrainer:
                      #"l2_leaf_reg": [1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 0.0, 1.0, 5.0, 10.0, 100.0],
                      "loss_function": ["MAE"]
                 }
-            } """
+            } 
             train_x = train_array[:,:-1]
             train_y = train_array[:,-1]
             test_x =test_array[:,:-1]
             test_y = test_array[:,-1]
-            # best_params = hyperparam_tune(train_x, train_y,models= models, params=params)
-            param_path = os.path.join("artifact","params.pkl")
-            best_params = load_object(param_path)
+            best_params = hyperparam_tune(train_x, train_y,models= models, params=params)
+            # param_path = os.path.join("artifact","params.pkl")
+            # best_params = load_object(param_path)
             logging.info("hyperparameter job has finished and return a dictionary of best parameters of each model")
             logging.info("super learner training starts")
             logging.info("Split the data with kfolds")
@@ -113,7 +113,8 @@ class ModelTrainer:
                 base_test_mae.append(test_mae)
             logging.info("base models have been saved successfully")
             logging.info("starts to fit a meta model")
-            meta_model  =  fit_meta_model(meta_x, meta_y) 
+            x = np.concatenate(meta_x, axis= 0)
+            meta_model  =  fit_meta_model(x, meta_y) 
             logging.info('starts to make predictions within meta model')
             train_y_prediction = super_learner_prediction(train_x, fitted_models,meta_model) 
             test_y_prediction = super_learner_prediction(test_x, fitted_models, meta_model)
