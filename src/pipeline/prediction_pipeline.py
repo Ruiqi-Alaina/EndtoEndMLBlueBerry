@@ -43,7 +43,7 @@ class CustomData:
         self.fruitmass = fruitmass
         self.seeds = seeds
     
-    def _get_data_as_data_frame(self):
+    def get_data_as_data_frame(self):
         try:
             Custom_data_input_dict = {
                 'clonesize': [self.clonesize], 

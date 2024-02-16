@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Wild Blue Berry Yield Prediction</h1>
+    <div class="form-box">
+    <form action="{{url_for('predict_datapoint')}}" method="POST">
+        <div class="form-group">
+            <label for="Clone Size ">Clone Size:</label>
+            <input type="text" id="Clone Size" name="Clone Size" placeholder="Enter clone size per m&sup2">
+        </div>
+    
+        <div class="form-group">
+            <label for="HoneyBee Density">HoneyBee Density:</label>
+            <input type="text" id="HoneyBee Density" name="HoneyBee Density" placeholder="Enter honey bee density">
+        </div>
+
+        <div class="form-group">
+            <label for="BubblesBee Density">BubblesBee Density:</label>
+            <input type="text" id="BubblesBee Density" name="BubblesBee Density" placeholder="Enter bubbels bee density">
+        </div>
+
+        <div class="form-group">
+            <label for="AndrenaBee Density">AndrenaBee Density:</label>
+            <input type="text" id="AndrenaBee Density" name="AndrenaBee Density" placeholder="Enter AndrenaBee bee density">
+        </div>
+
+        <div class="form-group">
+            <label for="OsmiaBee Density">OsmiaBee Density:</label>
+            <input type="text" id="OsmiaBee Density" name="OsmiaBee Density" placeholder="Enter OsmiaBee bee density">
+        </div>
+
+
+
+        <div class="form-group">  
+            <label for="Upper T">Highest Temperature during Bloom Season:</label>
+            <input type="text" id="Upper T" name="Upper T" placeholder="Enter Highest Temperature (degree) during Bloom Season ">
+        </div>
+        
+        <div class="form-group">  
+            <label for="RainDay">Total Number of Raining Days during Bloom Season:</label>
+            <input type="text" id="RainDay" name="RainDay" placeholder="Enter Total Number of Raining Days during Bloom Season ">
+        </div>
+
+
+        <div class="form-group">
+            <label for="Fruitset">Fruitset:</label>
+            <input type="text" id="Fruitset" name="Fruitset" placeholder="Enter Fruitset">
+        </div>
+        
+        <div class="form-group">
+            <label for="Fruitmass">Fruitmass:</label>
+            <input type="text" id="Fruitmass" name="Fruitmass" placeholder="Enter Fruitmass">
+        </div>
+
+        <div class="form-group">
+            <label for="Seeds">Seeds:</label>
+            <input type="text" id="Seeds" name="Seeds" placeholder="Enter Seeds">
+        </div>
+        
+    </div>
+    
+    <div style="clear:both;"></div>
+      <input type="submit" value="Submit">
+    </form>
+    </div>
+    <div>      
+    <h2>
+      Predicted Blue Berry Yield is : {{ results }}
+    </h2>
+  </body>
+</html>
