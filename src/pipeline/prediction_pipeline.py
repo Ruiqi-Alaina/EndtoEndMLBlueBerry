@@ -11,13 +11,13 @@ class PredictPipeline:
 
     def predict(self, features):
         try:
-            model_path = os.join.path('artifact','model.pkl')
-            preprocessor_path = os.join.path('artifact', 'preprocessor.pkl')
+            model_path = os.path.join('artifact','model.pkl')
+            preprocessor_path = os.path.join('artifact', 'preprocessor.pkl')
             model =  load_object(model_path)
             preprocessor = load_object(preprocessor_path)
             data_transformed = preprocessor.transform(features)
             base_model = model['base_models']
-            meta_model = model["meta_models"]
+            meta_model = model["meta_model"]
             preds = super_learner_prediction(data_transformed,base_model,meta_model)
             return preds
         except Exception as e:
