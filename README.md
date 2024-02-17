@@ -20,4 +20,4 @@
 ![ModelOutcome](https://github.com/Ruiqi-Alaina/EndtoEndMLBlueBerry/blob/main/output.PNG)
 ## Web 
 [Flask](https://github.com/Ruiqi-Alaina/EndtoEndMLBlueBerry/blob/main/app.py)
-[HTML](https://github.com/Ruiqi-Alaina/EndtoEndMLBlueBerry/blob/main/template/page.html)
+[HTML](https://github.com/Ruiqi-Alaina/EndtoEndMLBlueBerry/blob/main/templates/page.html)
