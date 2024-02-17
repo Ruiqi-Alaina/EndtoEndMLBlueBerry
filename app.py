@@ -10,8 +10,11 @@ application=Flask(__name__)
 app=application
 
 ## Route for a home page
+@app.route('/')
+def index():
+    return render_template('home.html') 
 
-@app.route('/',methods=['GET','POST'])
+@app.route('/predict',methods=['GET','POST'])
 def predict_datapoint():
     if request.method=='GET':
         return render_template('page.html')
@@ -19,7 +22,7 @@ def predict_datapoint():
         data=CustomData(
             clonesize=request.form.get("Clone Size"),
             honeybee=request.form.get('HoneyBee Density'),
-            bubbles=request.form.get("BubblesBee Density"),
+            bumbles=request.form.get("BumblesBee Density"),
             andrena=request.form.get("AndrenaBee Density"),
             osmia=request.form.get("OsmiaBee Density"),
             MaxOfUpperTRange=request.form.get("Upper T"),
